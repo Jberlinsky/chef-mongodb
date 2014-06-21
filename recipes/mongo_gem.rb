@@ -8,7 +8,7 @@ gcc.run_action(:install)
 
 build_essential = package 'build-essential' do
   action :nothing
-  only_of { platform_family?('debian') }
+  only_if { platform_family?('debian') }
 end
 build_essential.run_action(:install)
 
