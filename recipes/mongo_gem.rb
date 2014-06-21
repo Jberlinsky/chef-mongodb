@@ -6,6 +6,12 @@ gcc = package 'gcc' do
 end
 gcc.run_action(:install)
 
+build_essential = package 'build-essential' do
+  action :nothing
+  only_of { platform_family?('debian') }
+end
+build_essential.run_action(:install)
+
 node['mongodb']['ruby_gems'].each do |gem, version|
   chef_gem gem do
     version version
